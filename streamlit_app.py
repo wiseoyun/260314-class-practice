@@ -10,7 +10,6 @@ PROFILE = {
   "age": 21,
     "intro": "새로운 것을 배우고, 좋아하는 것을 오래 들여다보는 사람입니다. 작은 취향들을 모아 저를 소개해요.",
     "email": "hello@example.com",
-    "image_url": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1200&q=85",
 }
 
 INTERESTS = ["귀여운 것들", "산책", "사진 찍기", "새로운 카페 찾기", "식물 키우기", "일기 쓰기"]
@@ -89,18 +88,18 @@ st.markdown(
     .topbar {{ display: flex; justify-content: space-between; align-items: center; padding: .5rem 0 1.4rem; border-bottom: 1px dashed #d9cbd0; }}
     .brand {{ color: var(--ink); font: 700 1.5rem 'Gaegu', cursive; text-decoration: none; }}
     .top-note {{ color: var(--muted); font-size: .86rem; }}
-    .hero {{ display: grid; grid-template-columns: 1.15fr .85fr; gap: 3.5rem; align-items: center; padding: 4.2rem 1rem 4.8rem; }}
+    .hero {{ padding: 5rem 1rem 5.2rem; text-align: center; }}
+    .hero-copy {{ max-width: 760px; margin: 0 auto; }}
     .eyebrow {{ color: #8d727d; font-size: .9rem; letter-spacing: 0; margin: 0 0 .7rem; }}
     .hero h1 {{ font: 700 3.6rem/1.18 'Gaegu', cursive; letter-spacing: 0; margin: 0; }}
-    .hero h1 em {{ color: #d77791; font-style: normal; }}
+    .hero h1 em {{ position: relative; display: inline-block; padding: 0 .42em; color: #bb5c79; font-style: normal; background: linear-gradient(transparent 66%, var(--butter) 66%); }}
+    .hero h1 em::before, .hero h1 em::after {{ position: absolute; top: .22em; color: #d98aa0; font-size: .46em; }}
+    .hero h1 em::before {{ content: '✿'; left: -.42em; }}
+    .hero h1 em::after {{ content: '✦'; right: -.42em; }}
     .affiliation {{ display: inline-block; margin: 1.1rem 0 .7rem; padding: .45rem .8rem; background: var(--butter); border-radius: 999px; font-size: .9rem; }}
     .age-note {{ display: inline-block; margin-left: .35rem; padding: .45rem .8rem; background: var(--pink); border-radius: 999px; font-size: .9rem; }}
-    .intro {{ max-width: 540px; color: #655e68; font-size: 1.05rem; line-height: 1.9; margin: .7rem 0 1.3rem; }}
+    .intro {{ max-width: 540px; color: #655e68; font-size: 1.05rem; line-height: 1.9; margin: .7rem auto 1.3rem; }}
     .hello-note {{ display: inline-block; color: #665c66; background: white; border: 1px solid #f0dfe4; border-radius: 5px; padding: .65rem .9rem; font-size: .88rem; transform: rotate(-1deg); }}
-    .hero-art {{ position: relative; width: min(100%, 370px); justify-self: center; padding: .75rem; background: white; border: 1px solid #eadfe2; border-radius: 20px 20px 7px 20px; box-shadow: 8px 10px 0 var(--rose); transform: rotate(2deg); }}
-    .hero-art img {{ display: block; width: 100%; height: 330px; object-fit: cover; border-radius: 14px 14px 4px 14px; }}
-    .photo-caption {{ padding: .7rem .4rem .1rem; text-align: center; font: 700 1.35rem 'Gaegu', cursive; }}
-    .photo-sticker {{ position: absolute; top: -1.15rem; right: -1.25rem; display: grid; place-items: center; width: 62px; height: 62px; border-radius: 50%; background: var(--butter); font-size: 1.65rem; transform: rotate(9deg); }}
     .section {{ padding: 2.1rem 1rem 2.6rem; border-top: 1px dashed #d9cbd0; }}
     .section-heading {{ display: flex; gap: .75rem; align-items: center; margin: 0 0 1.25rem; }}
     .section-heading .emoji {{ display: grid; place-items: center; width: 42px; height: 42px; border-radius: 14px; font-size: 1.25rem; }}
@@ -126,10 +125,8 @@ st.markdown(
 
     @media (max-width: 760px) {{
         .stMainBlockContainer {{ padding: 1rem 1rem 2.5rem; }}
-        .hero {{ grid-template-columns: 1fr; gap: 2.4rem; padding: 2.8rem .25rem 3rem; }}
+        .hero {{ padding: 3.3rem .25rem 3.5rem; }}
         .hero h1 {{ font-size: 2.7rem; }}
-        .hero-art {{ width: min(88%, 370px); }}
-        .hero-art img {{ height: 280px; }}
         .section {{ padding: 1.7rem .25rem 2rem; }}
         .collections {{ grid-template-columns: 1fr; gap: .8rem; }}
         .footer {{ align-items: flex-start; flex-direction: column; }}
@@ -144,18 +141,13 @@ st.markdown(
 
       <main>
         <section class="hero" id="home">
-          <div>
+          <div class="hero-copy">
             <p class="eyebrow">A LITTLE INTRODUCTION ABOUT ME</p>
             <h1>안녕하세요,<br /><em>{escape(PROFILE['name'])}</em>입니다!</h1>
             <p class="affiliation">{escape(PROFILE['affiliation'])}</p>
             <span class="age-note">{escape(PROFILE['age'])}살</span>
             <p class="intro">{escape(PROFILE['intro'])}</p>
             <span class="hello-note">반가워요, 천천히 둘러봐 주세요 ♡</span>
-          </div>
-          <div class="hero-art">
-            <img src="{escape(PROFILE['image_url'])}" alt="내가 좋아하는 분위기의 꽃 사진" />
-            <div class="photo-caption">오늘의 나를 한 장에 담기</div>
-            <span class="photo-sticker" aria-hidden="true">🌼</span>
           </div>
         </section>
 
